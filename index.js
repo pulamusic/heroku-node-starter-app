@@ -1,10 +1,36 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const express = require('express'),
+  path = require('path'),
+  dotenv = require('dotenv'),
+  cool = require('cool-ascii-faces')
+  result = dotenv.config(),
+  port = process.env.PORT
+
+if (result.error) {
+  throw result.error
+}
 
 express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
+  .use(
+    express.static(
+      path.join(__dirname, 'public')
+    )
+  )
+  .set(
+    'views',
+    path.join(__dirname, 'views')
+  )
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  .get(
+    '/',
+    (req, res) => res.render('pages/index')
+  )
+  .get(
+    '/cool',
+    (req, res) => res.send(
+      cool()
+    )
+  )
+  .listen(
+    port,
+    () => console.log(`Listening on ${port}`)
+  )
