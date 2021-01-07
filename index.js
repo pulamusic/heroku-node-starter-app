@@ -3,7 +3,7 @@ const express = require('express'),
   dotenv = require('dotenv'),
   cool = require('cool-ascii-faces')
   result = dotenv.config(),
-  port = process.env.PORT
+  port = process.env.PORT || 5000
 
 if (result.error) {
   throw result.error
