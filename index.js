@@ -3,13 +3,15 @@ const express = require('express'),
   cool = require('cool-ascii-faces'),
   dotenv = require('dotenv')
 
-const result = dotenv.config(),
+const result = dotenv.config({
+  debug: process.env.DEBUG
+}),
   port = process.env.PORT
 
 if (result.error) {
   throw result.error
 }
-
+console.log(result)
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
