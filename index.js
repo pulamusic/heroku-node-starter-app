@@ -1,17 +1,8 @@
 const express = require('express'),
   path = require('path'),
   cool = require('cool-ascii-faces'),
-  dotenv = require('dotenv')
+  port = 5000
 
-const result = dotenv.config({
-  debug: process.env.DEBUG
-}),
-  port = process.env.PORT
-
-if (result.error) {
-  throw result.error
-}
-console.log(result)
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
@@ -19,4 +10,3 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (req, res) => res.send(cool()))
   .listen(port, () => console.log(`Listening on ${port}`))
-
