@@ -1,7 +1,7 @@
 const express = require('express'),
   path = require('path'),
   cool = require('cool-ascii-faces'),
-  port = 5000
+  port = process.env.PORT || 5000
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
