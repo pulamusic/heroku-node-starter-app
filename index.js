@@ -1,14 +1,15 @@
 const express = require('express'),
   path = require('path'),
-  dotenv = require('dotenv'),
   cool = require('cool-ascii-faces')
-  result = dotenv.config(),
   port = process.env.PORT || 5000
 
+  /*
+  dotenv = require('dotenv'),
+  result = dotenv.config(),
 if (result.error) {
   throw result.error
 }
-
+*/
 express()
   .use(
     express.static(
